@@ -1,0 +1,797 @@
+/* =========================================================
+   PRODUCTION CUP BASKET
+   DESIGN SYSTEM — STAGE 1
+   ========================================================= */
+
+/* =========================
+   1. DESIGN TOKENS
+========================= */
+
+:root {
+    --pc-navy: #0b1f3a;
+    --pc-navy-dark: #07162a;
+    --pc-navy-light: #16365f;
+
+    --pc-gold: #d4a72c;
+    --pc-gold-light: #e8c765;
+    --pc-gold-dark: #a98218;
+
+    --pc-white: #ffffff;
+    --pc-bg: #f5f7fa;
+    --pc-surface: #ffffff;
+
+    --pc-text: #172033;
+    --pc-text-muted: #6b7280;
+    --pc-border: #e5e7eb;
+
+    --pc-success: #16803c;
+    --pc-danger: #c62828;
+    --pc-warning: #b7791f;
+    --pc-info: #2563eb;
+
+    --pc-radius-sm: 8px;
+    --pc-radius-md: 12px;
+    --pc-radius-lg: 18px;
+
+    --pc-shadow-sm: 0 2px 8px rgba(11, 31, 58, 0.06);
+    --pc-shadow-md: 0 8px 24px rgba(11, 31, 58, 0.10);
+    --pc-shadow-lg: 0 16px 40px rgba(11, 31, 58, 0.14);
+
+    --pc-transition: 0.2s ease;
+}
+
+
+/* =========================
+   2. GLOBAL RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background: var(--pc-bg);
+    color: var(--pc-text);
+
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+
+/* =========================
+   3. CONTAINER
+========================= */
+
+.pc-container {
+    width: min(1180px, calc(100% - 40px));
+    margin-inline: auto;
+}
+
+
+/* =========================
+   4. NAVBAR
+========================= */
+
+.pc-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(11, 31, 58, 0.97);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(10px);
+}
+
+.pc-navbar-inner {
+    min-height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.pc-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--pc-white);
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: -0.3px;
+}
+
+.pc-brand-accent {
+    color: var(--pc-gold-light);
+}
+
+.pc-navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pc-navbar-menu a {
+    position: relative;
+
+    padding: 9px 14px;
+
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 14px;
+    font-weight: 600;
+
+    border-radius: var(--pc-radius-sm);
+
+    transition:
+        color var(--pc-transition),
+        background var(--pc-transition);
+}
+
+.pc-navbar-menu a:hover {
+    color: var(--pc-white);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.pc-navbar-menu a.active {
+    color: var(--pc-white);
+    background: rgba(212, 167, 44, 0.15);
+}
+
+.pc-navbar-menu a.active::after {
+    content: "";
+
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 3px;
+
+    height: 2px;
+
+    background: var(--pc-gold);
+    border-radius: 999px;
+}
+
+
+/* =========================
+   5. PAGE HEADER
+========================= */
+
+.pc-page-header {
+    padding: 48px 0 32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--pc-navy),
+            var(--pc-navy-light)
+        );
+
+    color: var(--pc-white);
+}
+
+.pc-page-header h1 {
+    margin: 0 0 8px;
+
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.pc-page-header p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 15px;
+}
+
+
+/* =========================
+   6. SECTION
+========================= */
+
+.pc-section {
+    padding: 48px 0;
+}
+
+.pc-section-header {
+    margin-bottom: 24px;
+}
+
+.pc-section-title {
+    margin: 0;
+
+    color: var(--pc-navy);
+
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.pc-section-subtitle {
+    margin: 6px 0 0;
+
+    color: var(--pc-text-muted);
+    font-size: 14px;
+}
+
+
+/* =========================
+   7. CARD
+========================= */
+
+.pc-card {
+    background: var(--pc-surface);
+
+    border: 1px solid var(--pc-border);
+    border-radius: var(--pc-radius-lg);
+
+    box-shadow: var(--pc-shadow-sm);
+
+    overflow: hidden;
+
+    transition:
+        transform var(--pc-transition),
+        box-shadow var(--pc-transition),
+        border-color var(--pc-transition);
+}
+
+.pc-card:hover {
+    transform: translateY(-2px);
+
+    border-color: rgba(11, 31, 58, 0.12);
+    box-shadow: var(--pc-shadow-md);
+}
+
+.pc-card-header {
+    padding: 20px 22px;
+
+    border-bottom: 1px solid var(--pc-border);
+}
+
+.pc-card-body {
+    padding: 22px;
+}
+
+.pc-card-footer {
+    padding: 16px 22px;
+
+    background: #fafbfc;
+
+    border-top: 1px solid var(--pc-border);
+}
+
+
+/* =========================
+   8. BUTTON
+========================= */
+
+.pc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 42px;
+    padding: 10px 17px;
+
+    border: 1px solid transparent;
+    border-radius: var(--pc-radius-sm);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--pc-transition),
+        background var(--pc-transition),
+        border-color var(--pc-transition),
+        box-shadow var(--pc-transition);
+}
+
+.pc-btn:hover {
+    transform: translateY(-1px);
+}
+
+.pc-btn:active {
+    transform: translateY(0);
+}
+
+.pc-btn-primary {
+    color: var(--pc-white);
+    background: var(--pc-navy);
+}
+
+.pc-btn-primary:hover {
+    background: var(--pc-navy-light);
+    box-shadow: var(--pc-shadow-sm);
+}
+
+.pc-btn-gold {
+    color: var(--pc-navy-dark);
+    background: var(--pc-gold);
+}
+
+.pc-btn-gold:hover {
+    background: var(--pc-gold-light);
+    box-shadow: var(--pc-shadow-sm);
+}
+
+.pc-btn-outline {
+    color: var(--pc-navy);
+
+    background: transparent;
+    border-color: var(--pc-navy);
+}
+
+.pc-btn-outline:hover {
+    color: var(--pc-white);
+    background: var(--pc-navy);
+}
+
+
+/* =========================
+   9. BADGE / STATUS
+========================= */
+
+.pc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.pc-badge-live {
+    color: #991b1b;
+    background: #fee2e2;
+}
+
+.pc-badge-finished {
+    color: #166534;
+    background: #dcfce7;
+}
+
+.pc-badge-scheduled {
+    color: #1e40af;
+    background: #dbeafe;
+}
+
+.pc-badge-gold {
+    color: #765400;
+    background: #f8e9b5;
+}
+
+
+/* =========================
+   10. MATCH CARD
+========================= */
+
+.pc-match-card {
+    background: var(--pc-white);
+
+    border: 1px solid var(--pc-border);
+    border-radius: var(--pc-radius-lg);
+
+    padding: 22px;
+
+    box-shadow: var(--pc-shadow-sm);
+
+    transition:
+        transform var(--pc-transition),
+        box-shadow var(--pc-transition);
+}
+
+.pc-match-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--pc-shadow-md);
+}
+
+.pc-match-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    margin-bottom: 20px;
+
+    color: var(--pc-text-muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.pc-match-teams {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 16px;
+}
+
+.pc-team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    text-align: center;
+}
+
+.pc-team-name {
+    color: var(--pc-navy);
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.pc-score {
+    color: var(--pc-navy);
+
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.pc-vs {
+    color: var(--pc-text-muted);
+
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   11. TABLE
+========================= */
+
+.pc-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    background: var(--pc-white);
+
+    border: 1px solid var(--pc-border);
+    border-radius: var(--pc-radius-lg);
+
+    box-shadow: var(--pc-shadow-sm);
+}
+
+.pc-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 650px;
+}
+
+.pc-table th {
+    padding: 14px 16px;
+
+    color: var(--pc-navy);
+
+    background: #f8fafc;
+
+    border-bottom: 1px solid var(--pc-border);
+
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+
+    text-align: left;
+}
+
+.pc-table td {
+    padding: 15px 16px;
+
+    border-bottom: 1px solid var(--pc-border);
+
+    color: var(--pc-text);
+
+    font-size: 14px;
+}
+
+.pc-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.pc-table tbody tr:hover {
+    background: #fafbfd;
+}
+
+
+/* =========================
+   12. FORM
+========================= */
+
+.pc-form-group {
+    margin-bottom: 18px;
+}
+
+.pc-form-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--pc-navy);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.pc-input,
+.pc-select,
+.pc-textarea {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    color: var(--pc-text);
+    background: var(--pc-white);
+
+    border: 1px solid #d7dce3;
+    border-radius: var(--pc-radius-sm);
+
+    outline: none;
+
+    transition:
+        border-color var(--pc-transition),
+        box-shadow var(--pc-transition);
+}
+
+.pc-input:focus,
+.pc-select:focus,
+.pc-textarea:focus {
+    border-color: var(--pc-navy);
+
+    box-shadow:
+        0 0 0 3px rgba(11, 31, 58, 0.10);
+}
+
+.pc-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+
+/* =========================
+   13. FOOTER
+========================= */
+
+.pc-footer {
+    margin-top: 48px;
+
+    padding: 30px 0;
+
+    color: rgba(255, 255, 255, 0.68);
+
+    background: var(--pc-navy-dark);
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.pc-footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.pc-footer-brand {
+    color: var(--pc-white);
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.pc-footer-text {
+    margin: 4px 0 0;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   14. UTILITY
+========================= */
+
+.pc-text-gold {
+    color: var(--pc-gold-dark);
+}
+
+.pc-text-navy {
+    color: var(--pc-navy);
+}
+
+.pc-text-muted {
+    color: var(--pc-text-muted);
+}
+
+.pc-divider {
+    width: 100%;
+    height: 1px;
+
+    background: var(--pc-border);
+}
+
+.pc-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.pc-grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pc-grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pc-grid-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+
+/* =========================
+   15. RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .pc-container {
+        width: min(100% - 32px, 1180px);
+    }
+
+    .pc-navbar-inner {
+        min-height: 64px;
+    }
+
+    .pc-navbar-menu {
+        gap: 2px;
+    }
+
+    .pc-navbar-menu a {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .pc-grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pc-grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .pc-container {
+        width: calc(100% - 24px);
+    }
+
+    .pc-navbar-inner {
+        flex-direction: column;
+        align-items: stretch;
+
+        padding: 12px 0;
+    }
+
+    .pc-brand {
+        justify-content: center;
+    }
+
+    .pc-navbar-menu {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .pc-navbar-menu a {
+        font-size: 12px;
+    }
+
+    .pc-page-header {
+        padding: 34px 0 26px;
+    }
+
+    .pc-section {
+        padding: 34px 0;
+    }
+
+    .pc-section-title {
+        font-size: 21px;
+    }
+
+    .pc-grid-2,
+    .pc-grid-3,
+    .pc-grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .pc-card-body {
+        padding: 18px;
+    }
+
+    .pc-match-card {
+        padding: 18px;
+    }
+
+    .pc-match-teams {
+        gap: 8px;
+    }
+
+    .pc-team-name {
+        font-size: 13px;
+    }
+
+    .pc-score {
+        font-size: 25px;
+    }
+
+    .pc-footer-inner {
+        flex-direction: column;
+        align-items: center;
+
+        text-align: center;
+    }
+}
+
+
+/* =========================
+   16. REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+}
