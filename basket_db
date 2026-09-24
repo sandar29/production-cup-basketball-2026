@@ -1,0 +1,53 @@
+-- Membuat Database
+CREATE DATABASE IF NOT EXISTS `basket_db`;
+USE `basket_db`;
+
+-- --------------------------------------------------------
+
+-- Struktur Tabel `teams`
+CREATE TABLE IF NOT EXISTS `teams` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `code` VARCHAR(10) NOT NULL,
+  `name` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- Data untuk Tabel `teams`
+INSERT INTO `teams` (`id`, `code`, `name`) VALUES
+(1, 'OM', 'OM'),
+(2, 'HCC', 'HCC'),
+(3, 'HSC', 'HSC'),
+(4, 'UTL', 'UTL'),
+(5, 'HOC', 'HOC');
+
+-- --------------------------------------------------------
+
+-- Struktur Tabel `matches`
+CREATE TABLE IF NOT EXISTS `matches` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `match_code` VARCHAR(10) NOT NULL,
+  `hari` VARCHAR(50) NOT NULL,
+  `jam` VARCHAR(30) NOT NULL,
+  `fase` VARCHAR(50) NOT NULL,
+  `team_a` VARCHAR(10) NOT NULL,
+  `team_b` VARCHAR(10) NOT NULL,
+  `score_a` INT(11) DEFAULT 0,
+  `score_b` INT(11) DEFAULT 0,
+  `status` ENUM('Belum Dimulai','Berlangsung','Selesai') DEFAULT 'Belum Dimulai',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- Data untuk Tabel `matches`
+INSERT INTO `matches` (`id`, `match_code`, `hari`, `jam`, `fase`, `team_a`, `team_b`, `score_a`, `score_b`, `status`) VALUES
+(1, 'G1', 'Senin, 28 Sep 2026', '16:30 - 17:25', 'Penyisihan G1', 'OM', 'HCC', 0, 0, 'Belum Dimulai'),
+(2, 'G2', 'Senin, 28 Sep 2026', '17:30 - 18:25', 'Penyisihan G2', 'HSC', 'UTL', 0, 0, 'Belum Dimulai'),
+(3, 'G3', 'Selasa, 29 Sep 2026', '16:30 - 17:25', 'Penyisihan G3', 'HCC', 'HOC', 0, 0, 'Belum Dimulai'),
+(4, 'G4', 'Selasa, 29 Sep 2026', '17:30 - 18:25', 'Penyisihan G4', 'UTL', 'OM', 0, 0, 'Belum Dimulai'),
+(5, 'G5', 'Rabu, 30 Sep 2026', '16:30 - 17:25', 'Penyisihan G5', 'HCC', 'HSC', 0, 0, 'Belum Dimulai'),
+(6, 'G6', 'Rabu, 30 Sep 2026', '17:30 - 18:25', 'Penyisihan G6', 'OM', 'HOC', 0, 0, 'Belum Dimulai'),
+(7, 'G7', 'Kamis, 01 Okt 2026', '16:30 - 17:25', 'Penyisihan G7', 'HCC', 'UTL', 0, 0, 'Belum Dimulai'),
+(8, 'G8', 'Kamis, 01 Okt 2026', '17:30 - 18:25', 'Penyisihan G8', 'HOC', 'HSC', 0, 0, 'Belum Dimulai'),
+(9, 'G9', 'Jumat, 02 Okt 2026', '16:30 - 17:25', 'Penyisihan G9', 'UTL', 'HOC', 0, 0, 'Belum Dimulai'),
+(10, 'G10', 'Jumat, 02 Okt 2026', '17:30 - 18:25', 'Penyisihan G10', 'HSC', 'OM', 0, 0, 'Belum Dimulai'),
+(11, 'FUN', 'Sabtu, 03 Okt 2026', '16:30 - 16:55', 'Fun Games', 'Tim A', 'Tim B', 0, 0, 'Belum Dimulai'),
+(12, 'FINAL', 'Sabtu, 03 Okt 2026', '17:00 - 17:30', 'GRAND FINAL', '1st', '2nd', 0, 0, 'Belum Dimulai');
